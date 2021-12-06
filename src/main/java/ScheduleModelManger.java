@@ -41,6 +41,8 @@ public class ScheduleModelManger implements SchedulesModel{
     @Override
     public void addStudentToCourse(Student student, Course course) {
 
+
+
     }
 
     @Override
@@ -119,12 +121,20 @@ public class ScheduleModelManger implements SchedulesModel{
     }
 
     @Override
-    public Teachers getTeachersForCourse(Course course) {
-        return null;
+    public Teachers getTeachersForCourse(Course course,Teachers teachers) {
+        Teachers teacherInCourse = new Teachers();
+        for (String x: course.getTeachers() ) {
+            for (Teacher y: teachers.getTeachers() ) {
+                if(x.equals(y.getShortName())){
+                    teacherInCourse.addTeacher(y);
+                }
+            }
+        }
+        return teacherInCourse;
     }
 
     @Override
     public Students getStudentsForCourse(Course course) {
-        return null;
+       return course.getStudents();
     }
 }
