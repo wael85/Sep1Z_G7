@@ -136,5 +136,6 @@ public class ScheduleModelManger implements SchedulesModel{
     @Override
     public Students getStudentsForCourse(Course course) {
        return course.getStudents();
+
     }
 }
