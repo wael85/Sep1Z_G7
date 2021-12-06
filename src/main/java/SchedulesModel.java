@@ -30,7 +30,7 @@ public interface SchedulesModel {
     ArrayList<Room> sortRooms(String scheduleId , ArrayList<Room> rooms);
     ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, BookedTime endBookedTime);
     Schedule getScheduleBySemesterClass(String semester,String className);
-    Teachers getTeachersForCourse(Course course);
+    Teachers getTeachersForCourse(Course course,Teachers teachers);
     Students getStudentsForCourse(Course course);
 
 
