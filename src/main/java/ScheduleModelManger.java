@@ -40,7 +40,7 @@ public class ScheduleModelManger implements SchedulesModel{
 
     @Override
     public void addStudentToCourse(Student student, Course course) {
-
+       course.getStudents().addStudent(student);
     }
 
     @Override
