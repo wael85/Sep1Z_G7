@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Rooms>
+    <Room>
+        <Name>C05.15</Name>
+        <Capacity>Ebbesen</Capacity>
+    </Room>
+
+    <Room>
+        <Name>C05.16b</Name>
+        <Capacity>Danielsen</Capacity>
+    </Room>
+
+    <Room>
+        <Name>C05.16a</Name>
+        <Capacity>Kofod</Capacity>
+    </Room>
+
+    <Room>
+        <Name>C03.12</Name>
+        <Capacity>Smidt</Capacity>
+    </Room>
+
+    <Room>
+        <Name>C03.13</Name>
+        <Capacity>Brodersen</Capacity>
+    </Room>
+
+</Rooms>

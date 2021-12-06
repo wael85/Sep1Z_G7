@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<Students>
+    <Student>
+        <FirstName>Abraham</FirstName>
+        <LastName>Jackson</LastName>
+        <ID>667345</ID>
+        <Class>X</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Brian</FirstName>
+        <LastName>Nielsen</LastName>
+        <ID>667346</ID>
+        <Class>X</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Christina</FirstName>
+        <LastName>Lana</LastName>
+        <ID>667347</ID>
+        <Class>Y</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Dennis</FirstName>
+        <LastName>Kolin</LastName>
+        <ID>667465</ID>
+        <Class>Y</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Eric</FirstName>
+        <LastName>Lynn</LastName>
+        <ID>667469</ID>
+        <Class>Y</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Franck</FirstName>
+        <LastName>Thomson</LastName>
+        <ID>667554</ID>
+        <Class>Y</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Gregor</FirstName>
+        <LastName>Gori</LastName>
+        <ID>667555</ID>
+        <Class>Y</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Helly</FirstName>
+        <LastName>Hansen</LastName>
+        <ID>667556</ID>
+        <Class>Z</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Ion</FirstName>
+        <LastName>Brick</LastName>
+        <ID>667578</ID>
+        <Class>Z</Class>
+        <Semester>1</Semester>
+    </Student>
+
+    <Student>
+        <FirstName>Julia Schwartz </FirstName>
+        <LastName>Schwartz</LastName>
+        <ID>667590</ID>
+        <Class>Z</Class>
+        <Semester>1</Semester>
+    </Student>
+
+</Students>
