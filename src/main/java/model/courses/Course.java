@@ -1,7 +1,6 @@
-package courses;
+package model.courses;
 
-import person.*;
-import rooms.*;
+import model.person.*;
 
 import java.util.ArrayList;
 
@@ -13,7 +12,7 @@ public class Course {
     private String name;
     private String className;
 
-   // private Rooms rooms;
+   // private Rooms model.rooms;
     private Students students;
     private ArrayList<String> teachersShortName;
 
@@ -23,7 +22,7 @@ public class Course {
         this.semester=semester;
         this.name = courseName;
         this.className = className;
-      //  this.rooms = new Rooms();
+      //  this.model.rooms = new Rooms();
         this.students = new Students();
         this.teachersShortName = new ArrayList<>();
     }
@@ -53,12 +52,16 @@ public class Course {
     }
 
    /* public ArrayList<Room> getRooms() {
-        return rooms;
+        return model.rooms;
     }*/
 
-   /* public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
+   /* public void setRooms(ArrayList<Room> model.rooms) {
+        this.model.rooms = model.rooms;
     }*/
+
+    public String getSemester() {
+        return semester;
+    }
 
     public Students getStudents() {
         return students;

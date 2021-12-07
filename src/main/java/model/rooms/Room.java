@@ -1,7 +1,7 @@
-package rooms;
+package model.rooms;
 
 import java.util.ArrayList;
-import bookedTime.*;
+import model.bookedTime.*;
 
 public class Room {
 

@@ -1,6 +1,6 @@
-package rooms;
+package model.rooms;
 
-import bookedTime.BookedTime;
+import model.bookedTime.BookedTime;
 
 import java.util.ArrayList;
 

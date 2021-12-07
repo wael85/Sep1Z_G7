@@ -1,4 +1,4 @@
-package schedule;
+package model.schedule;
 
 
 import java.util.ArrayList;
@@ -25,6 +25,14 @@ public class Schedules {
             }
         }
         return false;
+    }
+    public Schedule getScheduleById(String Id){
+        for (int i = 0; i < schedules.size(); i++) {
+            if(schedules.get(i).getId().equals(Id)){
+                return schedules.get(i);
+            }
+        }
+        return null;
     }
     public void deleteSchedule(int index){
         schedules.remove(index);

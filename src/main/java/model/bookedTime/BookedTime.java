@@ -1,4 +1,4 @@
-package bookedTime;
+package model.bookedTime;
 
 public class BookedTime {
     private DateTime start;

@@ -1,5 +1,5 @@
-import data.Data;
-import data.ReadFromTXTFile;
+import model.data.Data;
+import model.data.ReadFromTXTFile;
 
 import java.util.ArrayList;
 

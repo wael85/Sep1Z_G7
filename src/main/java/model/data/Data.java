@@ -1,14 +1,12 @@
-package data;
+package model.data;
 
-import courses.Course;
-import courses.Courses;
-import person.*;
-import rooms.Room;
-import rooms.Rooms;
-import schedule.Schedule;
-import schedule.Schedules;
+import model.courses.Course;
+import model.courses.Courses;
+import model.person.*;
+import model.rooms.Room;
+import model.rooms.Rooms;
+import model.schedule.Schedules;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -17,14 +15,14 @@ public class Data {
     public Students students;
     public Rooms rooms;
     public Courses courses;
-    public Schedules schedules;
+   // public Schedules schedules;
 
     public Data() {
         this.teachers = new Teachers();
         this.students = new Students();
         this.rooms = new Rooms(50);
         this.courses = new Courses();
-        this.schedules = new Schedules();
+      //  this.schedules = new Schedules();
     }
     public void setStudentsData( ArrayList<String[]> dataFromFile) throws Exception{
         if(dataFromFile.size() == 0 || dataFromFile.get(0)[0].equals( "Students".toLowerCase())){
@@ -52,7 +50,7 @@ public class Data {
                     teachers.addTeacher(teacher);
                 }
                 Course course = new Course(strings[2],strings[0],strings[1],strings[4]);
-                // check if courses list has this course but not this teacher then add this teacher short name to this cours
+                // check if model.courses list has this course but not this teacher then add this teacher short name to this cours
                 for (int j = 0; j < courses.size(); j++) {
                     if(courses.getCourse(j).equals(course)){
                         if(!(course.getTeachers().contains(teacher.getShortName()))){
@@ -60,9 +58,15 @@ public class Data {
                         }
                     }
                 }
-                // if this course not in the courses list then first add this teacher short name to this course and then add this course to this courses
+                // if this course not in the model.courses list then first add this teacher short name to this course and then add this course to this model.courses
                 if(!(courses.hasCourse(course))){
                     course.getTeachers().add(teacher.getShortName());
+                    // add all students for course
+                    for (Student x: students.getStudents() ) {
+                        if(course.getClassID().equals(x.getStudentsClass()) && course.getSemester().equals(x.getSemester())){
+                            course.getStudents().addStudent(x);
+                        }
+                    }
                     courses.addCourse(course);
                 }
 
@@ -72,14 +76,14 @@ public class Data {
 
     public void setRoomsData( ArrayList<String[]> dataFromFile) throws Exception{
         if(dataFromFile.size() == 0 || dataFromFile.get(0)[0].equals( "Rooms".toLowerCase())){
-            throw new Exception("The file is empty or not a rooms file");
+            throw new Exception("The file is empty or not a model.rooms file");
         }else {
             for (int i = 1; i < dataFromFile.size(); i++) {
                 String[] strings =  dataFromFile.get(i);
                 int capacity = Integer.parseInt(strings[1]);
                 if(strings.length == 3){
                     Room room = new Room(capacity,strings[0],strings[2]);
-                    // if the room not exist add it to rooms
+                    // if the room not exist add it to model.rooms
                     if((rooms.containRoom(room))){
                        rooms.addRoom(room);
                     }

@@ -1,10 +1,8 @@
-package schedule;
+package model.schedule;
 
-import bookedTime.BookedTime;
-import courses.Course;
-import person.Teacher;
-
-import java.util.Objects;
+import model.bookedTime.BookedTime;
+import model.courses.Course;
+import model.person.Teacher;
 
 public class Lesson {
     private Course course;

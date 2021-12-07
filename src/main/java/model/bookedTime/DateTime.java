@@ -1,7 +1,4 @@
-package bookedTime;
-
-import data.Data;
-import parser.ParserException;
+package model.bookedTime;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

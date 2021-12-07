@@ -1,12 +1,8 @@
-package schedule;
+package model.schedule;
 
-import bookedTime.BookedTime;
-import courses.*;
-import person.Teachers;
-import rooms.Rooms;
+import model.bookedTime.BookedTime;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Schedule {
     private String id;

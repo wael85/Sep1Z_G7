@@ -1,12 +1,8 @@
-package data;
-
-import courses.Course;
-import person.*;
+package model.data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class ReadFromTXTFile {

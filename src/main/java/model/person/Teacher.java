@@ -1,7 +1,7 @@
-package person;
+package model.person;
 
-import courses.Course;
-import bookedTime.*;
+import model.courses.Course;
+import model.bookedTime.*;
 
 import java.util.ArrayList;
 
@@ -73,7 +73,7 @@ public class Teacher extends Person {
     }
 
     public String toString(){
-        return super.toString() + "Teaching courses = " + teachingCourses + " Occupied time = " + occupiedTime;
+        return super.toString() + "Teaching model.courses = " + teachingCourses + " Occupied time = " + occupiedTime;
     }
     @Override
     public boolean equals(Object o){

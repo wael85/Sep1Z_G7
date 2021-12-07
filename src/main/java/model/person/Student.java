@@ -1,9 +1,8 @@
-package person;
+package model.person;
 
-import courses.Course;
+import model.courses.Course;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Student extends Person {
     private String studentsClass;
