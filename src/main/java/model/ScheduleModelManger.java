@@ -1,3 +1,5 @@
+package model;
+
 import model.bookedTime.BookedTime;
 import model.courses.Course;
 import model.courses.Courses;
@@ -15,7 +17,7 @@ import model.schedule.Schedules;
 
 import java.util.ArrayList;
 
-public class ScheduleModelManger implements SchedulesModel{
+public class ScheduleModelManger implements SchedulesModel {
     private Schedules schedules;
     private Data storage;
 

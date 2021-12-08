@@ -1,3 +1,5 @@
+package model;
+
 import model.bookedTime.BookedTime;
 import model.courses.*;
 import model.person.*;

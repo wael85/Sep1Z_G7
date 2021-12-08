@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="501.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ImportFilesController">
+   <children>
+      <Button layoutX="67.0" layoutY="168.0" mnemonicParsing="false" onAction="#importRoomsFiles" prefHeight="42.0" prefWidth="355.0" text="Import rooms file" />
+      <Label layoutX="38.0" layoutY="42.0" prefHeight="34.0" prefWidth="207.0" text="Import files:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="281.0" layoutY="24.0">
+         <image>
+            <Image url="@images/VIA_UC_logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="67.0" layoutY="109.0" mnemonicParsing="false" onAction="#importStudentsFiles" prefHeight="42.0" prefWidth="355.0" text="Import students file" />
+      <Button layoutX="67.0" layoutY="227.0" mnemonicParsing="false" onAction="#importCoursesFiles" prefHeight="42.0" prefWidth="355.0" text="Import courses file" />
+      <Button layoutX="388.0" layoutY="293.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Go back" />
+   </children>
+</AnchorPane>

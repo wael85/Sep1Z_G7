@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="533.0" prefWidth="616.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ChooseClassAndSemesterController">
+   <children>
+      <ListView layoutX="308.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
+      <ListView layoutX="20.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="408.0" layoutY="25.0">
+         <image>
+            <Image url="@views/images/VIA_UC_logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semester" wrappingWidth="146.8033447265625">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Label layoutX="20.0" layoutY="33.0" prefHeight="34.0" prefWidth="375.0" text="Create a schedule: Choose semester ">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Text layoutX="308.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class" wrappingWidth="146.8033447265625">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Label layoutX="20.0" layoutY="56.0" prefHeight="34.0" prefWidth="375.0" text="and class">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="449.0" layoutY="460.0" mnemonicParsing="false" onAction="#semestreClassNext" prefHeight="34.0" prefWidth="117.0" text="Next" />
+      <Button layoutX="20.0" layoutY="460.0" mnemonicParsing="false" onAction="#semestreClassBack" prefHeight="34.0" prefWidth="117.0" text="Back" />
+   </children>
+</AnchorPane>
