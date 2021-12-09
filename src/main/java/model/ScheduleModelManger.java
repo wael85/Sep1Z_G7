@@ -25,9 +25,13 @@ public class ScheduleModelManger implements SchedulesModel {
         schedules = new Schedules();
         storage = new Data();
     }
+    @Override
+     public Data getStorage(){
+        return this.storage;
+    }
 
     @Override
-    public void fetchStudents(String filePath, Students students)
+    public void fetchStudents(String filePath)
             throws Exception
     {
         ArrayList<String[]> dataOnFile = ReadFromTXTFile.ReadTXTFile(filePath);
@@ -35,7 +39,7 @@ public class ScheduleModelManger implements SchedulesModel {
     }
 
     @Override
-    public void fetchTeachersAndCourses(String filePath, Teachers teachers, Courses courses)
+    public void fetchTeachersAndCourses(String filePath)
             throws Exception
     {
         ArrayList<String[]> dataOnFile = ReadFromTXTFile.ReadTXTFile(filePath);
@@ -43,7 +47,7 @@ public class ScheduleModelManger implements SchedulesModel {
     }
 
     @Override
-    public void fetchRooms(String filePath, Rooms room) throws Exception
+    public void fetchRooms(String filePath) throws Exception
     {
         ArrayList<String[]> dataOnFile = ReadFromTXTFile.ReadTXTFile(filePath);
         storage.setRoomsData(dataOnFile);
@@ -156,5 +160,20 @@ public class ScheduleModelManger implements SchedulesModel {
     @Override
     public Students getStudentsForCourse(Course course) {
         return course.getStudents();
+    }
+
+
+    // test
+    public static void main(String[] args) {
+        SchedulesModel b = new ScheduleModelManger();
+       try {
+          String[] g = ReadFromTXTFile.ReadTXTFile("C:\\Users\\drwae\\Downloads\\Rooms.txt").get(1);
+           System.out.println(g[1]);
+           b.fetchRooms("C:\\Users\\drwae\\Downloads\\Rooms.txt");
+           System.out.println(b.getStorage().rooms.getRooms()[1].getRoomId());
+       }catch (Exception e){
+           System.out.println(e.getMessage());
+       }
+
     }
 }

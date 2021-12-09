@@ -2,6 +2,7 @@ package model;
 
 import model.bookedTime.BookedTime;
 import model.courses.*;
+import model.data.Data;
 import model.person.*;
 
 import model.rooms.Room;
@@ -12,9 +13,10 @@ import model.schedule.Schedule;
 import java.util.ArrayList;
 
 public interface SchedulesModel {
-    void fetchStudents(String filePath, Students students) throws Exception;
-    void fetchTeachersAndCourses(String filePath, Teachers teachers, Courses courses) throws Exception;
-    void fetchRooms(String filePath, Rooms room) throws Exception;
+    Data getStorage();
+    void fetchStudents(String filePath) throws Exception;
+    void fetchTeachersAndCourses(String filePath) throws Exception;
+    void fetchRooms(String filePath) throws Exception;
     void addStudentToCourse(Student student, Course course);
     void removeStudentFromCourse(Student student, Course course);
     void assignTeacherToCourse(Teacher teacher, Course course);

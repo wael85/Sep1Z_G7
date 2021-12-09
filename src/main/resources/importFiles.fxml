@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="501.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ImportFilesController">
+<AnchorPane prefHeight="350.0" prefWidth="501.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ImportFilesController">
    <children>
-      <Button layoutX="67.0" layoutY="168.0" mnemonicParsing="false" onAction="#importRoomsFiles" prefHeight="42.0" prefWidth="355.0" text="Import rooms file" />
+      <Button layoutX="124.0" layoutY="216.0" mnemonicParsing="false" onAction="#importRoomsFiles" prefHeight="42.0" prefWidth="241.0" text="Import rooms file" />
       <Label layoutX="38.0" layoutY="42.0" prefHeight="34.0" prefWidth="207.0" text="Import files:">
          <font>
             <Font size="19.0" />
@@ -20,8 +20,9 @@
             <Image url="@images/VIA_UC_logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="67.0" layoutY="109.0" mnemonicParsing="false" onAction="#importStudentsFiles" prefHeight="42.0" prefWidth="355.0" text="Import students file" />
-      <Button layoutX="67.0" layoutY="227.0" mnemonicParsing="false" onAction="#importCoursesFiles" prefHeight="42.0" prefWidth="355.0" text="Import courses file" />
-      <Button layoutX="388.0" layoutY="293.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Go back" />
+      <Button layoutX="126.0" layoutY="96.0" mnemonicParsing="false" onAction="#importStudentsFiles" prefHeight="42.0" prefWidth="241.0" text="Import students file" />
+      <Button layoutX="125.0" layoutY="154.0" mnemonicParsing="false" onAction="#importCoursesFiles" prefHeight="42.0" prefWidth="241.0" text="Import courses file" />
+      <Button layoutX="412.0" layoutY="258.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Go back" />
+      <Label fx:id="error" layoutX="14.0" layoutY="292.0" prefHeight="42.0" prefWidth="308.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

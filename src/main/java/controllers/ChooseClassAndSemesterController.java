@@ -3,10 +3,13 @@ import factories.ViewHandler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import model.SchedulesModel;
 
+
 public class ChooseClassAndSemesterController {
+    @FXML private ListView<String> semester;
     private ViewHandler viewHandler;
     private SchedulesModel model;
     private Region root;
@@ -21,6 +24,7 @@ public class ChooseClassAndSemesterController {
     public void reset(){
         //
     }
+
     public Region getRoot(){
         return root;
     }

@@ -30,9 +30,9 @@ public class Data {
         }else {
             for (int i = 1; i < dataFromFile.size(); i++) {
                 String[] strings =  dataFromFile.get(i);
-                String firstName = strings[2].split(" ")[0];
-                String lastName = strings[2].split(" ")[1];
-                Student student = new Student(firstName,lastName,(firstName+lastName+"@via.dk")," ",strings[1],strings[0]);
+                String firstName = strings[3].split(" ")[0];
+                String lastName = strings[3].split(" ")[1];
+                Student student = new Student(firstName,lastName,(firstName+lastName+"@via.dk")," ",strings[1],strings[0] ,strings[2]);
                 if(!(students.hasStudent(student))){
                      students.addStudent(student);
                 }
@@ -84,12 +84,12 @@ public class Data {
                 if(strings.length == 3){
                     Room room = new Room(capacity,strings[0],strings[2]);
                     // if the room not exist add it to model.rooms
-                    if((rooms.containRoom(room))){
-                       rooms.addRoom(room);
+                    if(!(rooms.containRoom(room))){
+                       this.rooms.addRoom(room);
                     }
                 }else {
                     Room room = new Room(capacity,strings[0]);
-                    if((rooms.containRoom(room))){
+                    if(!(rooms.containRoom(room))){
                         rooms.addRoom(room);
                     }
                 }
@@ -101,14 +101,16 @@ public class Data {
 
 
     public static void main(String[] args) {
+        Data d = new Data();
         try {
             ArrayList<String[]> data = ReadFromTXTFile.ReadTXTFile("C:\\Users\\drwae\\Downloads\\Rooms.txt");
-            for ( String[]x: data) {
-                for (String y:x) {
-                    System.out.println(y);
-                }
+            try {
+                d.setRoomsData(data);
+                System.out.println(d.rooms.getRoomsList().get(0).getRoomId());
+            }catch (Exception e){
+                System.out.println(e.getMessage());
             }
-        }catch (FileNotFoundException e){
+        }catch (Exception e){
             System.out.println(e.getMessage());
         }
     }

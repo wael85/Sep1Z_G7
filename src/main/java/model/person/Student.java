@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class Student extends Person {
     private String studentsClass;
     private String semester;
+    private String id;
     private ArrayList<Course> courses;
 
-    public Student (String firstName, String lastName, String email, String telephoneNumber, String studentsClass , String semester) {
+    public Student (String firstName, String lastName, String email, String telephoneNumber, String studentsClass , String semester , String id) {
         super(firstName,lastName,email,telephoneNumber);
+        this.id = id;
         this.studentsClass = studentsClass;
         this.semester = semester;
         this.courses= new ArrayList<>();
@@ -20,6 +22,10 @@ public class Student extends Person {
     public void assignStudentToCourse(Course course){
         courses.add(course);
 
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void unassignStudentFromCourse(Course course){

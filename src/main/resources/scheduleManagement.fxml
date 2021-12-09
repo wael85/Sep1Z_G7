@@ -21,7 +21,7 @@
       </Label>
       <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="281.0" layoutY="24.0">
          <image>
-            <Image url="@views/images/VIA_UC_logo.png" />
+            <Image url="@images/VIA_UC_logo.png" />
          </image>
       </ImageView>
    </children>

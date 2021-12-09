@@ -29,7 +29,7 @@ public class ScheduleManagementController {
 
     @FXML
     public void createSchedule(ActionEvent actionEvent) {
-        viewHandler.openView("chooseCourse.fxml");
+        viewHandler.openView("chooseClassAndSemester.fxml");
 
     }
     @FXML
