@@ -14,16 +14,32 @@ import model.rooms.Rooms;
 import model.schedule.Lesson;
 import model.schedule.Schedule;
 import model.schedule.Schedules;
+import model.schedule.SelectedData;
 
 import java.util.ArrayList;
 
 public class ScheduleModelManger implements SchedulesModel {
     private Schedules schedules;
     private Data storage;
+    private SelectedData selectedData;
 
     public ScheduleModelManger(){
         schedules = new Schedules();
         storage = new Data();
+        selectedData = new SelectedData();
+    }
+    @Override
+    public SelectedData getSelectedData() {
+        return selectedData;
+    }
+    @Override
+    public void setSelectedData(SelectedData selectedData) {
+        this.selectedData = selectedData;
+    }
+
+    @Override
+    public Schedules getSchedules(){
+        return schedules;
     }
     @Override
      public Data getStorage(){
@@ -125,7 +141,7 @@ public class ScheduleModelManger implements SchedulesModel {
     }
 
     @Override
-    public int getECTS(Course course) {
+    public String getECTS(Course course) {
         return course.getECTS();
     }
 

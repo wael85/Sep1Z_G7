@@ -9,16 +9,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseCourseController">
+<AnchorPane prefHeight="427.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseCourseController">
    <children>
-      <AnchorPane prefHeight="543.0" prefWidth="626.0" style="-fx-background-color: white;">
+      <AnchorPane prefHeight="433.0" prefWidth="530.0" style="-fx-background-color: white;">
          <children>
-            <ListView layoutX="20.0" layoutY="166.0" prefHeight="266.0" prefWidth="329.0" />
-            <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="408.0" layoutY="25.0">
+            <ListView fx:id="courseList" layoutX="20.0" layoutY="166.0" prefHeight="191.0" prefWidth="182.0" />
+            <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="322.0" layoutY="25.0">
                <image>
-                  <Image url="@views/images/VIA_UC_logo.png" />
+                  <Image url="@images/VIA_UC_logo.png" />
                </image>
             </ImageView>
             <Text layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course" wrappingWidth="146.8033447265625">
@@ -31,8 +29,8 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Button layoutX="449.0" layoutY="460.0" mnemonicParsing="false" onAction="#CourseNext" prefHeight="34.0" prefWidth="117.0" text="Next" />
-            <Button layoutX="20.0" layoutY="460.0" mnemonicParsing="false" onAction="#courseBack" prefHeight="34.0" prefWidth="117.0" text="Back" />
+            <Button layoutX="384.0" layoutY="373.0" mnemonicParsing="false" onAction="#CourseNext" prefHeight="34.0" prefWidth="117.0" text="Next" />
+            <Button layoutX="20.0" layoutY="373.0" mnemonicParsing="false" onAction="#courseBack" prefHeight="34.0" prefWidth="117.0" text="Back" />
          </children>
       </AnchorPane>
    </children>

@@ -49,7 +49,7 @@ public abstract class Person {
     }
     public abstract String getFullName();
     public String toString(){
-        return "First name" + firstName + " Last Name" + lastName + " Email" + email + " Telephone number" + telephoneNumber;
+        return  firstName + " " + lastName; //+ " Email" + email + " Telephone number" + telephoneNumber;
     }
 
 

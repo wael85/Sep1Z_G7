@@ -80,6 +80,6 @@ public class Teacher extends Person {
         if (!(o instanceof Teacher)){
             return false;
         }
-        return super.equals((Teacher)o) && shortName.equals((Teacher)o);
+        return  shortName.equals(((Teacher) o).getShortName());
     }
 }

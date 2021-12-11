@@ -1,13 +1,10 @@
 package factories;
 
+import controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import controllers.ChooseClassAndSemesterController;
-import controllers.ChooseCourseController;
-import controllers.ImportFilesController;
-import controllers.ScheduleManagementController;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -20,6 +17,7 @@ public class ViewHandler {
     private ImportFilesController importFilesController;
     private ChooseClassAndSemesterController chooseClassAndSemesterController;
     private ChooseCourseController chooseCourseController;
+    private CreateLessonController createLessonController;
     private Stage mainStage;
 
 
@@ -45,6 +43,8 @@ public class ViewHandler {
                 root = openChooseClassAndSemester("/chooseClassAndSemester.fxml");break;
             case "importFiles.fxml":
                 root = loadImportFile("/importFiles.fxml");break;
+            case "createLesson.fxml":
+                root = loadCreatLesson("/createLesson.fxml");break;
         }
         currentScene.setRoot(root);
         String title ="";
@@ -121,59 +121,26 @@ public class ViewHandler {
         }
         return chooseClassAndSemesterController.getRoot();
     }
+    public Region loadCreatLesson(String fxmlFile){
+        if(createLessonController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Objects.requireNonNull(getClass().getResource(fxmlFile)));
+                Region root = loader.load();
+                createLessonController = loader.getController();
+                createLessonController.init(this,model,root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            createLessonController.reset();
+        }
+        return createLessonController.getRoot();
+    }
+
     public void closeView(){
         mainStage.close();
     }
- /*   public void openChooseClassAndSemester(String fxmlFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/chooseClassAndSemester.fxml"));
-            Parent root = loader.load();
-            ChooseClassAndSemesterController controller = loader.getController();
-            controller.init(this);
-            Scene scene = new Scene(root);
-            mainStage.setTitle("School System");
 
-            mainStage.setScene(scene);
-            mainStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void openChooseCourse() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chooseCourse.fxml"));
-            //loader.setLocation();
-            Parent root = loader.load();
-            ChooseCourseController controller = loader.getController();
-            controller.init(this);
-            Scene scene = new Scene(root);
-            mainStage.setTitle("School System");
-
-            mainStage.setScene(scene);
-            mainStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void openImportFiles() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("importFiles.fxml"));
-           // loader.setLocation(getClass().getResource("i/mportFiles.fxml"));
-            Parent root = loader.load();
-            ChooseCourseController controller = loader.getController();
-            controller.init(this);
-            Scene scene = new Scene(root);
-            mainStage.setTitle("School System");
-
-            mainStage.setScene(scene);
-            mainStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
 

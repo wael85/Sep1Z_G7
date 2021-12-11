@@ -54,7 +54,7 @@ public class Student extends Person {
     }
 
     public String toString(){
-        return super.toString() + "Class = " + studentsClass + "Semester = " + semester;
+        return super.toString() + " " + id;//"Class = " + studentsClass + "Semester = " + semester;
     }
 
     public boolean equals(Object obj){

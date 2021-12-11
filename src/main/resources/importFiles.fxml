@@ -22,7 +22,7 @@
       </ImageView>
       <Button layoutX="126.0" layoutY="96.0" mnemonicParsing="false" onAction="#importStudentsFiles" prefHeight="42.0" prefWidth="241.0" text="Import students file" />
       <Button layoutX="125.0" layoutY="154.0" mnemonicParsing="false" onAction="#importCoursesFiles" prefHeight="42.0" prefWidth="241.0" text="Import courses file" />
-      <Button layoutX="412.0" layoutY="258.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Go back" />
-      <Label fx:id="error" layoutX="14.0" layoutY="292.0" prefHeight="42.0" prefWidth="308.0" textAlignment="CENTER" />
+      <Button layoutX="412.0" layoutY="258.0" mnemonicParsing="false" onAction="#goBack" prefHeight="34.0" prefWidth="75.0" text="Go back" />
+      <Label fx:id="errorLabel" layoutX="14.0" layoutY="292.0" prefHeight="42.0" prefWidth="308.0" textAlignment="CENTER" textFill="#ed0e0e" />
    </children>
 </AnchorPane>

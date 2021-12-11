@@ -9,11 +9,16 @@ import model.rooms.Room;
 import model.rooms.Rooms;
 import model.schedule.Lesson;
 import model.schedule.Schedule;
+import model.schedule.Schedules;
+import model.schedule.SelectedData;
 
 import java.util.ArrayList;
 
 public interface SchedulesModel {
     Data getStorage();
+    Schedules getSchedules();
+    SelectedData getSelectedData();
+    void setSelectedData(SelectedData selectedData);
     void fetchStudents(String filePath) throws Exception;
     void fetchTeachersAndCourses(String filePath) throws Exception;
     void fetchRooms(String filePath) throws Exception;
@@ -29,7 +34,7 @@ public interface SchedulesModel {
     void saveSchedule(Schedule schedule);
     void deleteSchedule(Schedule schedule);
     int getCapacity(Room room);
-    int getECTS(Course course);
+    String getECTS(Course course);
     ArrayList<Room> sortRooms(String scheduleId , ArrayList<Room> rooms);
     ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, BookedTime endBookedTime);
     Schedule getScheduleBySemesterClass(String semester,String className);

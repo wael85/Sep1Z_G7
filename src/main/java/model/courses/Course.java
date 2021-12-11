@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Course {
 
-    private int eCTS;
+    private String eCTS;
     private String semester;
     private String name;
     private String className;
@@ -18,7 +18,7 @@ public class Course {
 
 
     public Course(String courseName, String semester, String className, String eCTS) {
-        this.eCTS = Integer.parseInt(eCTS);
+        this.eCTS = eCTS;
         this.semester=semester;
         this.name = courseName;
         this.className = className;
@@ -27,13 +27,10 @@ public class Course {
         this.teachersShortName = new ArrayList<>();
     }
 
-    public int getECTS() {
+    public String getECTS() {
         return eCTS;
     }
 
-    public void setECTS(int ECTS) {
-        this.eCTS = ECTS;
-    }
 
     public String getCourseName() {
         return name;
@@ -45,6 +42,12 @@ public class Course {
 
     public String getClassID() {
         return className;
+    }
+    public boolean hasTeacher(String shortName){
+        if (teachersShortName.contains(shortName)){
+            return true;
+        }
+        return false;
     }
 
     public void setClassID(String className) {
@@ -67,6 +70,7 @@ public class Course {
         return students;
     }
 
+
     public void setStudents(Students students) {
         this.students = students;
     }
@@ -85,7 +89,7 @@ public class Course {
         }
         Course other= (Course) obj;
 
-        return eCTS==other.eCTS && semester.equals(other.semester) && name.equals(other.name) && className.equals(other.className);
+        return  semester.equals(other.getSemester()) && name.equals(other.getCourseName()) && className.equals(other.getClassID());
     }
 
 }

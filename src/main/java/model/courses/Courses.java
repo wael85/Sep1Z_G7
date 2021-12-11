@@ -26,6 +26,14 @@ public class Courses {
     public ArrayList<Course> getCoursesList() {
         return coursesList;
     }
+    public Course getCourse(Course course){
+        for (int i = 0; i < coursesList.size(); i++) {
+            if(coursesList.get(i).equals(course)){
+                return coursesList.get(i);
+            }
+        }
+        return null;
+    }
 
     public void setCoursesList(ArrayList<Course> coursesList) {
         this.coursesList = coursesList;
@@ -35,7 +43,11 @@ public class Courses {
     }
     public boolean hasCourse(Course course){
         for (int i = 0; i < coursesList.size(); i++) {
-            if(coursesList.get(i).equals(course)){
+            if(
+                    coursesList.get(i).getClassID().equals(course.getClassID()) &&
+                    coursesList.get(i).getSemester().equals(course.getSemester()) &&
+                    coursesList.get(i).getCourseName().equals(course.getCourseName())
+            ){
                 return true;
             }
         }

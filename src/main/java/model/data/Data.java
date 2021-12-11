@@ -25,7 +25,7 @@ public class Data {
       //  this.schedules = new Schedules();
     }
     public void setStudentsData( ArrayList<String[]> dataFromFile) throws Exception{
-        if(dataFromFile.size() == 0 || dataFromFile.get(0)[0].equals( "Students".toLowerCase())){
+        if(dataFromFile.size() == 0 || !(dataFromFile.get(0)[0].equals( "Students"))){
             throw new Exception("The file is empty or not a student file");
         }else {
             for (int i = 1; i < dataFromFile.size(); i++) {
@@ -40,12 +40,53 @@ public class Data {
         }
     }
     public void setTeachersCoursesData( ArrayList<String[]> dataFromFile) throws Exception{
-        if(dataFromFile.size() == 0 || dataFromFile.get(0)[0].equals( "Courses".toLowerCase())){
+        if(dataFromFile.size() == 0 || !(dataFromFile.get(0)[0].equals( "Courses"))){
             throw new Exception("The file is empty or not a Courses file");
         }else {
             for (int i = 1; i < dataFromFile.size(); i++) {
                 String[] strings =  dataFromFile.get(i);
-                Teacher teacher = new Teacher(strings[3],"firstName","lastName",(strings[3]+"@via.dk")," ");
+                Course course = new Course(strings[2],strings[0],strings[1],strings[4]);
+                if(courses.getCoursesList().size() == 0){
+                    Teacher teacher = new Teacher(strings[3],"firstName","lastName",(strings[3]+"@via.dk")," ");
+                    if(!(teachers.hasTeacher(teacher))){
+                        teachers.addTeacher(teacher);
+                    }
+                    course.getTeachers().add(teacher.getShortName());
+                    for (Student x: students.getStudents() ) {
+                        if(course.getClassID().equals(x.getStudentsClass()) && course.getSemester().equals(x.getSemester())){
+                            course.getStudents().addStudent(x);
+                        }
+                    }
+                    courses.getCoursesList().add(course);
+                }else {
+                        if(!(courses.hasCourse(course))) {
+                            Teacher teacher = new Teacher(strings[3], "firstName", "lastName", (strings[3] + "@via.dk"), " ");
+                            if (!(teachers.hasTeacher(teacher))) {
+                                teachers.addTeacher(teacher);
+                            }
+                            course.getTeachers().add(teacher.getShortName());
+                            for (Student x : students.getStudents()) {
+                                if (course.getClassID().equals(x.getStudentsClass()) && course.getSemester().equals(x.getSemester())) {
+                                    course.getStudents().addStudent(x);
+                                }
+                            }
+                            courses.addCourse(course);
+                        }else {
+                            Teacher teacher = new Teacher(strings[3],"firstName","lastName",(strings[3]+"@via.dk")," ");
+                            for (int k = 0; k < courses.size(); k++) {
+                                if (  courses.getCourse(k).getClassID().equals(course.getClassID()) &&
+                                        courses.getCourse(k).getSemester().equals(course.getSemester()) &&
+                                        courses.getCourse(k).getCourseName().equals(course.getCourseName())){
+                                    courses.getCourse(k).getTeachers().add(teacher.getShortName());
+                                }
+                            }
+                            System.out.println("here 2");
+                        }
+
+
+                }
+
+              /*  Teacher teacher = new Teacher(strings[3],"firstName","lastName",(strings[3]+"@via.dk")," ");
                 if(!(teachers.hasTeacher(teacher))){
                     teachers.addTeacher(teacher);
                 }
@@ -53,7 +94,7 @@ public class Data {
                 // check if model.courses list has this course but not this teacher then add this teacher short name to this cours
                 for (int j = 0; j < courses.size(); j++) {
                     if(courses.getCourse(j).equals(course)){
-                        if(!(course.getTeachers().contains(teacher.getShortName()))){
+                        if(!(courses.getCourse(j).hasTeacher(teacher.getShortName()))){
                             courses.getCourse(j).getTeachers().add(teacher.getShortName());
                         }
                     }
@@ -68,14 +109,14 @@ public class Data {
                         }
                     }
                     courses.addCourse(course);
-                }
+                }*/
 
             }
         }
     }
 
     public void setRoomsData( ArrayList<String[]> dataFromFile) throws Exception{
-        if(dataFromFile.size() == 0 || dataFromFile.get(0)[0].equals( "Rooms".toLowerCase())){
+        if(dataFromFile.size() == 0 || !(dataFromFile.get(0)[0].equals( "Rooms"))){
             throw new Exception("The file is empty or not a model.rooms file");
         }else {
             for (int i = 1; i < dataFromFile.size(); i++) {

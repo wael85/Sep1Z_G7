@@ -9,10 +9,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="533.0" prefWidth="616.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseClassAndSemesterController">
+<AnchorPane prefHeight="533.0" prefWidth="616.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChooseClassAndSemesterController">
    <children>
-      <ListView fx:id="semester" layoutX="308.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
-      <ListView fx:id="className" layoutX="20.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
+      <ListView fx:id="classList" layoutX="308.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
+      <ListView fx:id="semesterList"  layoutX="20.0" layoutY="166.0" prefHeight="266.0" prefWidth="254.0" />
       <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="408.0" layoutY="25.0">
          <image>
             <Image url="@images/VIA_UC_logo.png" />
