@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="501.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditScheduleController">
+   <children>
+      <Label layoutX="14.0" layoutY="24.0" prefHeight="34.0" prefWidth="223.0" text="Edit an existing schedule">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="281.0" layoutY="24.0">
+         <image>
+            <Image url="@images/VIA_UC_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="49.0" prefHeight="34.0" prefWidth="223.0" text="page:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Text layoutX="29.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of schedules already created:" wrappingWidth="200.0" />
+      <Button layoutX="347.0" layoutY="275.0" mnemonicParsing="false" onAction="#editScheduleBack" prefHeight="34.0" prefWidth="117.0" text="Go back" />
+      <ListView fx:id="schedulesViewList" layoutX="29.0" layoutY="122.0" onMouseClicked="#list" onMousePressed="#selected" prefHeight="200.0" prefWidth="245.0" />
+      <Button layoutX="347.0" layoutY="222.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="34.0" prefWidth="117.0" text="Delete" />
+   </children>
+</AnchorPane>
