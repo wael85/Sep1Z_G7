@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="451.0" prefWidth="571.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BookRoomForLessonController">
+   <children>
+      <Label layoutX="38.0" layoutY="24.0" prefHeight="34.0" prefWidth="243.0" text="Book room for lesson:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="342.0" layoutY="16.0">
+         <image>
+            <Image url="@images/VIA_UC_logo.png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="startDate" layoutX="109.0" layoutY="134.0" onAction="#startDate" prefHeight="28.0" prefWidth="117.0" />
+      <Label layoutX="61.0" layoutY="134.0" prefHeight="28.0" prefWidth="47.0" text="Start: ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="175.0" prefHeight="28.0" prefWidth="47.0" text="End:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="395.0" layoutY="395.0" mnemonicParsing="false" onAction="#backButton" prefHeight="34.0" prefWidth="117.0" text="Go back" />
+      <Button layoutX="395.0" layoutY="348.0" mnemonicParsing="false" onAction="#saveButton" prefHeight="34.0" prefWidth="117.0" text="Save" />
+      <Label layoutX="335.0" layoutY="89.0" prefHeight="28.0" prefWidth="213.0" text="Select available room:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="81.0" layoutY="265.0" mnemonicParsing="false" onAction="#checkAvailablityButton" prefHeight="34.0" prefWidth="254.0" text="Check availablity" />
+      <ListView fx:id="availableRooms" layoutX="342.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="5.0" layoutY="217.0" prefHeight="28.0" prefWidth="103.0" text="End of period:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="endPeriod" layoutX="109.0" layoutY="217.0" onAction="#endPeriodDate" prefHeight="28.0" prefWidth="117.0" />
+      <ComboBox fx:id="startTime" layoutX="234.0" layoutY="135.0" prefHeight="25.0" prefWidth="97.0" />
+      <ComboBox fx:id="endTime" layoutX="234.0" layoutY="176.0" prefHeight="25.0" prefWidth="97.0" />
+   </children>
+</AnchorPane>

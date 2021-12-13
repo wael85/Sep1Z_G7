@@ -18,6 +18,7 @@ public class ViewHandler {
     private ChooseClassAndSemesterController chooseClassAndSemesterController;
     private ChooseCourseController chooseCourseController;
     private CreateLessonController createLessonController;
+    private BookRoomForLessonController bookRoomForLessonController;
     private Stage mainStage;
 
 
@@ -45,6 +46,8 @@ public class ViewHandler {
                 root = loadImportFile("/importFiles.fxml");break;
             case "createLesson.fxml":
                 root = loadCreatLesson("/createLesson.fxml");break;
+            case "bookRoomForLesson.fxml":
+                root = loadBookRoomForLesson("/bookRoomForLesson.fxml");break;
         }
         currentScene.setRoot(root);
         String title ="";
@@ -137,7 +140,22 @@ public class ViewHandler {
         }
         return createLessonController.getRoot();
     }
-
+    public Region loadBookRoomForLesson(String fxmlFile){
+        if(bookRoomForLessonController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Objects.requireNonNull(getClass().getResource(fxmlFile)));
+                Region root = loader.load();
+                bookRoomForLessonController = loader.getController();
+                bookRoomForLessonController.init(this,model,root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            bookRoomForLessonController.reset();
+        }
+        return bookRoomForLessonController.getRoot();
+    }
     public void closeView(){
         mainStage.close();
     }

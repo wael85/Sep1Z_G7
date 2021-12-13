@@ -13,7 +13,6 @@ import model.person.Student;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import java.awt.*;
 
 public class CreateLessonController{
     private ViewHandler viewHandler;
@@ -75,8 +74,14 @@ public class CreateLessonController{
     public void setRoot(Region root) {
         this.root = root;
     }
+    @FXML
+    public void bookRoomButton() {
+        System.out.println("here1");
+        model.getSelectedData().getCourse().getStudents().getStudents().clear();
+        model.getSelectedData().getCourse().getStudents().getStudents().addAll(studentsViewModel);
+        viewHandler.openView("bookRoomForLesson.fxml");
 
-    public void bookRoomButton(ActionEvent actionEvent) {
+        System.out.println("here 2");
     }
 
     public void backButton(ActionEvent actionEvent) {
@@ -90,10 +95,29 @@ public class CreateLessonController{
     public void studentNumberField(ActionEvent actionEvent) {
 
     }
-    public void addStudentButton(ActionEvent actionEvent) {
+    public void addStudentButton() {
+        if(studentName.getText() == ""){
+            studentName.requestFocus();
+        }
+        if(surname.getText() == ""){
+            surname.requestFocus();
+        }else {
+            Student student = new Student(studentName.getText(),surname.getText(),surname+"@via.dk","23423",model.getSelectedData().getClassName(),model.getSelectedData().getSemester(),studentNr.getText());
+            studentsViewModel.add(student);
+            studentName.setText("");
+            surname.setText("");
+            studentNr.setText("");
+        }
+
+
     }
 
     public void deleteStudentButton(ActionEvent actionEvent) {
+        for (int i = 0; i < studentsViewModel.size(); i++) {
+            if (studentsViewModel.get(i).equals(studentsList.getSelectionModel().getSelectedItem())){
+                studentsViewModel.remove(i);
+            }
+        }
     }
 
 
