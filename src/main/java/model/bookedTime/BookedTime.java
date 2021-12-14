@@ -24,4 +24,9 @@ public class BookedTime {
     public void setEnd(DateTime endTime) {
         this.end = endTime;
     }
+
+    @Override
+    public String toString() {
+        return  start +":" + end;
+    }
 }

@@ -33,8 +33,8 @@ public class ScheduleManagementController {
 
     }
     @FXML
-    public void editSchedule(ActionEvent actionEvent) {
-
+    public void editSchedule() {
+       viewHandler.openView("editSchedule.fxml");
     }
 
     @FXML

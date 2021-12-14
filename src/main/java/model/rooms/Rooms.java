@@ -46,6 +46,14 @@ public class Rooms {
             }
         }
     }
+    public Room getRoomByRoomId(String roomId){
+        for (int i = 0; i < rooms.length ; i++) {
+            if(rooms[i].getRoomId().equals(roomId)){
+                return rooms[i];
+            }
+        }
+        return null;
+    }
     public ArrayList<Room> getAvailableRooms(BookedTime bookedTime){
         ArrayList<Room> availableRooms = new ArrayList<>();
         for (int i = 0; i < getRoomsList().size() ; i++) {

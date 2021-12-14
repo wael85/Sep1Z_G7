@@ -6,12 +6,12 @@ import model.person.Teacher;
 
 public class Lesson {
     private Course course;
-    private Teacher teacher;
+    private String teacher;
     private String roomId;
     private BookedTime reservedDateTime;
 
     // remeber each time creating lesson teachers' occupied time and room reserved time should update;
-    public Lesson(Course course, Teacher teacher, String roomId, BookedTime reservedDateTime) {
+    public Lesson(Course course, String teacher, String roomId, BookedTime reservedDateTime) {
         this.course = course;
         this.teacher = teacher;
         this.roomId = roomId;
@@ -26,12 +26,16 @@ public class Lesson {
         this.course = course;
     }
 
-    public Teacher getTeacher() {
+   /* public Teacher getTeacher() {
         return teacher;
+    }*/
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public String getTeacher() {
+        return teacher;
     }
 
     public String getRoomId() {

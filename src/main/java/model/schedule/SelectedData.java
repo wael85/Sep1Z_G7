@@ -8,12 +8,14 @@ public class SelectedData {
     private Schedule schedule;
     private String semester;
     private String className;
+    private String selectedTeacher;
 
     public SelectedData(){
         this.course = null;
         this.schedule = null;
         this.semester = "";
         this.className = "";
+        selectedTeacher = "";
     }
 
     public Course getCourse() {
@@ -46,5 +48,13 @@ public class SelectedData {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getSelectedTeacher() {
+        return selectedTeacher;
+    }
+
+    public void setSelectedTeacher(String selectedTeacher) {
+        this.selectedTeacher = selectedTeacher;
     }
 }

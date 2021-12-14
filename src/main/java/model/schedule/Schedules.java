@@ -34,7 +34,22 @@ public class Schedules {
         }
         return null;
     }
+    public Schedule getSchedule(Schedule schedule){
+        for (int i = 0; i < schedules.size(); i++) {
+           if(schedules.get(i).getId().equals(schedule.getId())){
+               return schedules.get(i);
+           }
+        }
+        return null;
+    }
     public void deleteSchedule(int index){
         schedules.remove(index);
+    }
+
+    @Override
+    public String toString() {
+        return "Schedules{" +
+                "schedules=" + schedules +
+                '}';
     }
 }

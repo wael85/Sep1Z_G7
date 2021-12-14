@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="451.0" prefWidth="571.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BookRoomForLessonController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BookRoomForLessonController">
    <children>
       <Label layoutX="38.0" layoutY="24.0" prefHeight="34.0" prefWidth="243.0" text="Book room for lesson:">
          <font>
@@ -49,6 +49,6 @@
       </Label>
       <DatePicker fx:id="endPeriod" layoutX="109.0" layoutY="217.0" onAction="#endPeriodDate" prefHeight="28.0" prefWidth="117.0" />
       <ComboBox fx:id="startTime" layoutX="234.0" layoutY="135.0" prefHeight="25.0" prefWidth="97.0" />
-      <ComboBox fx:id="endTime" layoutX="234.0" layoutY="176.0" prefHeight="25.0" prefWidth="97.0" />
+      <ComboBox fx:id="endTime" layoutX="234.0" layoutY="176.0" onInputMethodTextChanged="#endTimeCheck" onMouseClicked="#endTimeCheck" prefHeight="25.0" prefWidth="97.0" />
    </children>
 </AnchorPane>

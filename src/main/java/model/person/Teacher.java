@@ -63,6 +63,10 @@ public class Teacher extends Person {
         return shortName;
     }
 
+    public ArrayList<BookedTime> getOccupiedTime() {
+        return occupiedTime;
+    }
+
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }

@@ -52,7 +52,16 @@ public class CreateLessonController{
         return viewHandler;
     }
     public void reset(){
-        //
+        teachersViewModel.clear();
+        for (String x:model.getSelectedData().getCourse().getTeachers() ) {
+            teachersViewModel.add(x);
+        }
+        teachersList.setItems(teachersViewModel);
+        for (Student x : model.getSelectedData().getCourse().getStudents().getStudents()){
+            studentsViewModel.add(x);
+        }
+        studentsList.setItems(studentsViewModel);
+        etcsLable.setText(model.getSelectedData().getCourse().getECTS());
     }
 
     public void setViewHandler(ViewHandler viewHandler) {
@@ -83,7 +92,10 @@ public class CreateLessonController{
 
         System.out.println("here 2");
     }
-
+    @FXML
+    public void selectedTeacher(){
+        model.getSelectedData().setSelectedTeacher(teachersList.getSelectionModel().getSelectedItem().toString());
+    }
     public void backButton(ActionEvent actionEvent) {
     }
 

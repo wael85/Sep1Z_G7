@@ -22,11 +22,13 @@ public class ScheduleModelManger implements SchedulesModel {
     private Schedules schedules;
     private Data storage;
     private SelectedData selectedData;
+    private Schedule selectedSchedule;
 
     public ScheduleModelManger(){
         schedules = new Schedules();
         storage = new Data();
         selectedData = new SelectedData();
+        selectedSchedule = null;
     }
     @Override
     public SelectedData getSelectedData() {
@@ -103,6 +105,7 @@ public class ScheduleModelManger implements SchedulesModel {
     public ArrayList<Room> getAvailableRooms(BookedTime bookedTime) {
         ArrayList<Room> availableRooms= new ArrayList<>();
         for (int i = 0; i < storage.rooms.getSize(); i++) {
+            System.out.println(storage.rooms.getRoomsList().get(i).getRoomId());
             if(storage.rooms.getRoomsList().get(i).isAvailable(bookedTime)){
                 availableRooms.add(storage.rooms.getRoomsList().get(i));
             }
@@ -116,7 +119,7 @@ public class ScheduleModelManger implements SchedulesModel {
     }
 
     @Override
-    public void scheduleNewLesson(String scheduleId,BookedTime bookedTime, Course course, Room room, Teacher teacher) {
+    public void scheduleNewLesson(String scheduleId,BookedTime bookedTime, Course course, Room room, String teacher) {
         schedules.getScheduleById(scheduleId).scheduleNewLesson(new Lesson(course,teacher,room.getRoomId(),bookedTime));
     }
 
@@ -178,6 +181,15 @@ public class ScheduleModelManger implements SchedulesModel {
         return course.getStudents();
     }
 
+    @Override
+    public void setSelectedSchedule(Schedule schedule) {
+        selectedSchedule = schedule;
+    }
+    //Selected schedule for CourseEditingPageController
+    @Override
+    public Schedule getSelectedSchedule() {
+        return selectedSchedule;
+    }
 
     // test
     public static void main(String[] args) {

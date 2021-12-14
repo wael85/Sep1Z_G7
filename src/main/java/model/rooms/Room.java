@@ -14,6 +14,7 @@ public class Room {
         this.bookTime = new ArrayList<>();
         this.roomCapacity = roomCapacity;
         this.roomId = roomId;
+        neighborRoom = "";
     }
     public Room(int roomCapacity, String roomId,String neighborRoom) {
          this( roomCapacity, roomId);
@@ -31,7 +32,7 @@ public class Room {
     }
 
     public boolean isFoldable() {
-        return !(neighborRoom == null);
+        return !(neighborRoom == "");
     }
     public void addNewBooking(BookedTime bookedTime){
         bookTime.add(bookedTime);
@@ -69,6 +70,7 @@ public class Room {
 
 
     public String toString() {
-        return "Room "+ roomId +", room capacity: " + roomCapacity +", foldable: " + neighborRoom +", book time: " + bookTime;
+
+        return  roomId +" : " + roomCapacity  +" -foldableWith:" + neighborRoom  +'{'+ bookTime+'}';
     }
 }

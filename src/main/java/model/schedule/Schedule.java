@@ -72,12 +72,15 @@ public class Schedule {
 
     @Override
     public String toString() {
-        return "Schedule{" +
-                "id='" + id + '\'' +
-                ", semester='" + semester + '\'' +
-                ", className='" + className + '\'' +
-                ", lessons=" + lessons +
-                '}';
+        String s = "";
+        for (Lesson l:lessons  ) {
+            s+= l.toString();
+        }
+        return "Schedule " +
+                "id: " + id  +
+                ", semester='" + semester +
+                ", className='" + className +
+                s;
     }
 
     @Override
