@@ -92,4 +92,8 @@ public class Course {
         return  semester.equals(other.getSemester()) && name.equals(other.getCourseName()) && className.equals(other.getClassID());
     }
 
+    @Override
+    public String toString() {
+        return   this.getCourseName();
+    }
 }

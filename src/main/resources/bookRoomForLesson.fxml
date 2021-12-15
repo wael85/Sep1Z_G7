@@ -22,7 +22,7 @@
             <Image url="@images/VIA_UC_logo.png" />
          </image>
       </ImageView>
-      <DatePicker fx:id="startDate" layoutX="109.0" layoutY="134.0" onAction="#startDate" prefHeight="28.0" prefWidth="117.0" />
+      <DatePicker fx:id="startDate" layoutX="109.0" layoutY="134.0"  prefHeight="28.0" prefWidth="117.0" />
       <Label layoutX="61.0" layoutY="134.0" prefHeight="28.0" prefWidth="47.0" text="Start: ">
          <font>
             <Font size="15.0" />

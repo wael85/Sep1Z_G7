@@ -27,7 +27,6 @@ public class ChooseCourseController {
         this.model = model;
         coursesArray = new ArrayList<>();
 
-        Schedule schedule = model.getSelectedData().getSchedule();
         coursesArray.clear();
         courseList.getItems().clear();
         for (Course x: model.getStorage().courses.getCoursesList()) {
@@ -41,7 +40,17 @@ public class ChooseCourseController {
         courseList.getItems().addAll(coursesArray);
     }
     public void reset(){
-        //
+        coursesArray.clear();
+        courseList.getItems().clear();
+        for (Course x: model.getStorage().courses.getCoursesList()) {
+            String s =x.getSemester()+x.getClassID();
+            if (model.getSelectedData().getSchedule().getId().equals(s)){
+                if(!(coursesArray.contains(x.getCourseName()))){
+                    coursesArray.add(x.getCourseName());
+                }
+            }
+        }
+        courseList.getItems().addAll(coursesArray);
     };
     public Region getRoot(){
         return root;
@@ -58,8 +67,6 @@ public class ChooseCourseController {
             }
         }
 
-
-        //model.getSelectedData().setCourse();
         viewHandler.openView("createLesson.fxml");
     }
 

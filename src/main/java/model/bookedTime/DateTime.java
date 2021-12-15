@@ -120,7 +120,7 @@ public class DateTime {
 
 
     public String toString() {
-        return "Date: " +"day= " + day +", month= "+month+", year= "+year +", hour= " + hour + ", minute= " + minute;
+        return year +"-"+month+"-"+day+" "+hour+ ":" + minute;
     }
 
     public static void main(String[] args) {

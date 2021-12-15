@@ -1,6 +1,7 @@
 package model;
 
 import model.bookedTime.BookedTime;
+import model.bookedTime.DateTime;
 import model.courses.*;
 import model.data.Data;
 import model.person.*;
@@ -35,8 +36,8 @@ public interface SchedulesModel {
     void deleteSchedule(Schedule schedule);
     int getCapacity(Room room);
     String getECTS(Course course);
-    ArrayList<Room> sortRooms(String scheduleId , ArrayList<Room> rooms);
-    ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, BookedTime endBookedTime);
+    ArrayList<Room> sortRooms(String scheduleId , BookedTime bookedTime);
+    ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, DateTime endPeriod);
     Schedule getScheduleBySemesterClass(String semester,String className);
     Teachers getTeachersForCourse(Course course);
     Students getStudentsForCourse(Course course);

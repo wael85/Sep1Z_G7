@@ -8,6 +8,8 @@ public class Lesson {
     private Course course;
     private String teacher;
     private String roomId;
+    private String start;
+    private String end;
     private BookedTime reservedDateTime;
 
     // remeber each time creating lesson teachers' occupied time and room reserved time should update;
@@ -16,6 +18,8 @@ public class Lesson {
         this.teacher = teacher;
         this.roomId = roomId;
         this.reservedDateTime = reservedDateTime;
+        this.start = reservedDateTime.getStart().toString();
+        this.end = reservedDateTime.getEnd().toString();
     }
 
     public Course getCourse() {
@@ -38,6 +42,14 @@ public class Lesson {
         return teacher;
     }
 
+    public String getEnd() {
+        return end;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
     public String getRoomId() {
         return roomId;
     }
@@ -57,11 +69,7 @@ public class Lesson {
     @Override
     public String toString() {
         return "Lesson{" +
-                "course=" + course +
-                ", teacher=" + teacher +
-                ", roomId='" + roomId + '\'' +
-                ", reservedDateTime=" + reservedDateTime +
-                '}';
+                course.getCourseName()+roomId+teacher+reservedDateTime.getStart()+reservedDateTime.getEnd();
     }
 
     @Override

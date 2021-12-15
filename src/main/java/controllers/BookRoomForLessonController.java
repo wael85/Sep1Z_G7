@@ -14,10 +14,14 @@ import model.bookedTime.DateTime;
 import model.rooms.Room;
 import model.rooms.Rooms;
 import model.schedule.Lesson;
+import parser.ParserException;
+import parser.XmlJsonParser;
 
+import java.io.File;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 public class BookRoomForLessonController {
     private Alert.AlertType ERROR ;
@@ -83,12 +87,23 @@ public class BookRoomForLessonController {
 
     }
 
-    public void saveButton(ActionEvent actionEvent) {
-        if(bookedTime != null && availableRooms.getSelectionModel().getSelectedItem() != null){
-            Lesson lesson = new Lesson(model.getSelectedData().getCourse(),model.getSelectedData().getSelectedTeacher(),availableRooms.getSelectionModel().getSelectedItem().getRoomId(),bookedTime);
+    public void saveButton() {
+        if(bookedTime != null && availableRooms.getSelectionModel().getSelectedItem()
+                != null && model.getSelectedData().getSelectedTeacher() != ""){
+            Lesson lesson = new Lesson(
+                    model.getSelectedData().getCourse(),
+                    model.getSelectedData().getSelectedTeacher(),
+                    availableRooms.getSelectionModel().getSelectedItem().getRoomId(),bookedTime
+            );
             model.getSchedules().getScheduleById(model.getSelectedData().getSchedule().getId()).scheduleNewLesson(lesson);
             model.getStorage().rooms.getRoomByRoomId(lesson.getRoomId()).getBookedDates().add(bookedTime);
-            model.getStorage().teachers.getTeacherByShortName(lesson.getTeacher()).addTeachingHours(bookedTime);
+            model.getStorage().teachers.getTeacherByShortName(model.getSelectedData().getSelectedTeacher()).addTeachingHours(bookedTime);
+            XmlJsonParser parser =new XmlJsonParser();
+            try {
+                File file = parser.toXml(model.getSchedules(),"schedules.xml");
+            }catch (ParserException e){
+                System.out.println(e.getMessage());
+            }
             Alert a = new Alert( Alert.AlertType.INFORMATION);
             a.setOnCloseRequest((e)->{
                 viewHandler.openView("bookRoomForLesson.fxml");
@@ -96,8 +111,6 @@ public class BookRoomForLessonController {
             a.setContentText("lesson Added  Successfully!!");
             a.show();
         }
-        System.out.println(model.getSchedules());
-        System.out.println(model.getStorage().teachers.getTeacherByShortName(model.getSelectedData().getSelectedTeacher()).getOccupiedTime());
 
     }
     @FXML
@@ -129,10 +142,20 @@ public class BookRoomForLessonController {
     public void checkAvailablityButton(ActionEvent actionEvent) {
         roomsViewModel.clear();
         if (startDate.getValue() == null || startTime.getValue() == null || endTime.getValue() == null) {
-            System.out.println("null if");
+            if(startDate.getValue() == null){
+                startDate.requestFocus();
+            }
+            if(startTime.getValue() == null){
+                startTime.requestFocus();
+            }
+            if(endTime.getValue() == null){
+                endTime.requestFocus();
+            }
         } else {
-            Double end = Double.parseDouble(endTime.getValue().toString().split(":")[0]) + Double.parseDouble(endTime.getValue().toString().split(":")[1])/100;
-            Double start = Double.parseDouble(startTime.getValue().toString().split(":")[0]) + Double.parseDouble(startTime.getValue().toString().split(":")[1])/100;
+            Double end = Double.parseDouble(endTime.getValue().toString().split(":")[0]) +
+                    Double.parseDouble(endTime.getValue().toString().split(":")[1])/100;
+            Double start = Double.parseDouble(startTime.getValue().toString().split(":")[0]) +
+                    Double.parseDouble(startTime.getValue().toString().split(":")[1])/100;
             if(end <= start){
                 Alert a = new Alert(ERROR);
                 a.getButtonTypes().add(ButtonType.CLOSE);
@@ -143,14 +166,14 @@ public class BookRoomForLessonController {
                 a.show();
 
             }else {
-                 bookedTime = new BookedTime(
+                bookedTime = new BookedTime(
                         new DateTime(
                                 startDate.getValue().getDayOfMonth(),
                                 startDate.getValue().getMonthValue(),
                                 startDate.getValue().getYear(),
                                 (int) Math.floor(start),
                                 (int)Double.parseDouble(startTime.getValue().toString().split(":")[1])
-                                ),
+                        ),
                         new DateTime(
                                 startDate.getValue().getDayOfMonth(),
                                 startDate.getValue().getMonthValue(),
@@ -158,31 +181,20 @@ public class BookRoomForLessonController {
                                 (int) Math.floor(end),
                                 (int)Double.parseDouble(endTime.getValue().toString().split(":")[1])
                         ));
-                ArrayList<Room> rooms = model.getStorage().rooms.getAvailableRooms(bookedTime);
-                roomsViewModel.addAll(rooms);
-            }
+                 if(endPeriod.getValue() != null){
+
+                 }else {
+
+                     ArrayList<Room> rooms = model.sortRooms(model.getSelectedData().getSchedule().getId(),bookedTime);
+
+                     roomsViewModel.addAll(rooms);
+                 }
+                 }
         }
-        if(startDate.getValue() == null){
-            startDate.requestFocus();
-        }
-        if(startTime.getValue() == null){
-            startTime.requestFocus();
-        }
-        if(endTime.getValue() == null){
-            endTime.requestFocus();
-        }
+
 
     }
 
-    public void startTime(ActionEvent actionEvent) {
-        System.out.println(startTime.getValue());
-    }
-
-    public void startDate(ActionEvent actionEvent) {
-    }
-
-    public void endPeriodTime(ActionEvent actionEvent) {
-    }
 
     public void endPeriodDate(ActionEvent actionEvent) {
         Calendar cal = Calendar.getInstance();

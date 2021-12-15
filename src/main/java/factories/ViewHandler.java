@@ -20,9 +20,7 @@ public class ViewHandler {
     private CreateLessonController createLessonController;
     private BookRoomForLessonController bookRoomForLessonController;
     private EditCoursePageController editCoursePageController;
-    private EditLessonBooktimeController editLessonBooktimeController;
     private EditScheduleController editScheduleController;
-    private CourseEditingPageController courseEditingPageController;
     private Stage mainStage;
 
 
@@ -52,12 +50,10 @@ public class ViewHandler {
                 root = loadCreatLesson("/createLesson.fxml");break;
             case "bookRoomForLesson.fxml":
                 root = loadBookRoomForLesson("/bookRoomForLesson.fxml");break;
-            case "editCoursePage.fxml":
-                root= loadEditCoursePage("/editCoursePage.fxml");break;
             case "editSchedule.fxml":
                 root =loadEditSchedule("/editSchedule.fxml");break;
-            case "courseEditingPage.fxml":
-                root = loadCourseEditingPage("/courseEditingPage.fxml");break;
+            case "editCoursePage.fxml":
+                root = loadEditCoursePage("/editCoursePage.fxml");break;
         }
         currentScene.setRoot(root);
         String title ="";
@@ -198,22 +194,7 @@ public class ViewHandler {
         }
         return editScheduleController.getRoot();
     }
-    public Region loadCourseEditingPage(String fxmlFile){
-        if(courseEditingPageController == null){
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(Objects.requireNonNull(getClass().getResource(fxmlFile)));
-                Region root = loader.load();
-                courseEditingPageController = loader.getController();
-                courseEditingPageController.init(this,model,root);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else {
-            courseEditingPageController.reset();
-        }
-        return courseEditingPageController.getRoot();
-    }
+
     public void closeView(){
         mainStage.close();
     }

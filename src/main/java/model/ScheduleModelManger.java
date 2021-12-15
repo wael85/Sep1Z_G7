@@ -1,6 +1,7 @@
 package model;
 
 import model.bookedTime.BookedTime;
+import model.bookedTime.DateTime;
 import model.courses.Course;
 import model.courses.Courses;
 import model.data.Data;
@@ -16,7 +17,10 @@ import model.schedule.Schedule;
 import model.schedule.Schedules;
 import model.schedule.SelectedData;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ScheduleModelManger implements SchedulesModel {
     private Schedules schedules;
@@ -105,7 +109,6 @@ public class ScheduleModelManger implements SchedulesModel {
     public ArrayList<Room> getAvailableRooms(BookedTime bookedTime) {
         ArrayList<Room> availableRooms= new ArrayList<>();
         for (int i = 0; i < storage.rooms.getSize(); i++) {
-            System.out.println(storage.rooms.getRoomsList().get(i).getRoomId());
             if(storage.rooms.getRoomsList().get(i).isAvailable(bookedTime)){
                 availableRooms.add(storage.rooms.getRoomsList().get(i));
             }
@@ -149,13 +152,71 @@ public class ScheduleModelManger implements SchedulesModel {
     }
 
     @Override
-    public ArrayList<Room> sortRooms(String scheduleId, ArrayList<Room> rooms) {
-        return null;
+    public ArrayList<Room> sortRooms(String scheduleId, BookedTime bookedTime) {
+
+        ArrayList<Room> availableRooms = storage.rooms.getAvailableRooms(bookedTime);
+        if( schedules.getScheduleById(scheduleId).getLessons().size() > 0) {
+            String id = schedules.getScheduleById(scheduleId).getLessons().get(0).getRoomId();
+            for (int i = 0; i < availableRooms.size(); i++) {
+                if (availableRooms.get(i).getRoomId().equals(id)) {
+                    Collections.swap(availableRooms, 0, i);
+                }
+            }
+        }
+        return availableRooms;
     }
 
     @Override
-    public ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, BookedTime endBookedTime) {
-        return null;
+    public ArrayList<BookedTime> getAllSelectedDateTimeInLongPeriod(BookedTime startBookedTime, DateTime endPeriod)
+    {
+
+        ArrayList<BookedTime> longPeriod = new ArrayList<>();
+
+        //12.12.2012 - 9:00 -12:00 <- 13.12.2012 - 9:00-13:00
+        DateTime startBookedTimeStart = startBookedTime.getStart();
+        DateTime startBookedTimeEnd = startBookedTime.getEnd();
+
+        int hourStart = startBookedTimeStart.getHour();
+        int minuteStart = startBookedTimeStart.getMinute();
+
+        int hourEnd = startBookedTimeEnd.getHour();
+        int minuteEnd = startBookedTimeEnd.getMinute();
+
+        DateTime newStartBookedTime;
+        DateTime newEndBookedTime ;
+
+        longPeriod.add(startBookedTime);
+
+        BookedTime bookedTime;
+
+        LocalDate startPeriod = LocalDate.of(startBookedTimeEnd.getYear(), startBookedTimeEnd.getMonth(), startBookedTimeEnd.getDay());
+        LocalDate endPeriodGiven = LocalDate.of(endPeriod.getYear(), endPeriod.getMonth(), endPeriod.getDay());
+
+        long difference;
+        long differenceInWeeks=0;
+
+        for(int j=0; j<10; j++)
+        //while(startBookedTime.getStart().getDatTimeInMillieSecond()<= endPeriod.getDatTimeInMillieSecond())
+        {
+            if(startPeriod.getYear() == endPeriod.getYear())
+            {
+                difference = endPeriodGiven.getLong(ChronoField.DAY_OF_YEAR) - startPeriod.getLong(ChronoField.DAY_OF_YEAR);
+                differenceInWeeks = difference/7;
+            }
+
+            for(int i=1; i<=differenceInWeeks; i++)
+            {
+                LocalDate returnvalue = startPeriod.plusWeeks(i);
+
+                newStartBookedTime = new DateTime(returnvalue.getDayOfMonth(), returnvalue.getMonthValue(), returnvalue.getYear(), hourStart, minuteStart);
+                newEndBookedTime = new DateTime(returnvalue.getDayOfMonth(), returnvalue.getMonthValue(), returnvalue.getYear(), hourEnd, minuteEnd);
+
+                bookedTime = new BookedTime(newStartBookedTime, newEndBookedTime);
+
+                longPeriod.add(bookedTime);
+            }
+        }
+        return longPeriod;
     }
 
     @Override
@@ -172,7 +233,7 @@ public class ScheduleModelManger implements SchedulesModel {
         {
             teachers.addTeacher(storage.teachers.getTeacherByShortName(teachersListShortName.get(i)));
         }
-        //Shouldn't it return Teacher? then change to public Teacher getTeacherstForCourse...
+
         return teachers;
     }
 

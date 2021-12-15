@@ -19,7 +19,7 @@ public class CreateLessonController{
     private SchedulesModel model;
     private Region root;
     @FXML private ListView studentsList;
-    @FXML private ListView teachersList;
+    @FXML private ListView<String> teachersList;
     @FXML private Label etcsLable;
     private ObservableList<Student> studentsViewModel;
     private ObservableList<String> teachersViewModel;
@@ -57,6 +57,7 @@ public class CreateLessonController{
             teachersViewModel.add(x);
         }
         teachersList.setItems(teachersViewModel);
+        studentsViewModel.clear();
         for (Student x : model.getSelectedData().getCourse().getStudents().getStudents()){
             studentsViewModel.add(x);
         }
@@ -85,16 +86,13 @@ public class CreateLessonController{
     }
     @FXML
     public void bookRoomButton() {
-        System.out.println("here1");
         model.getSelectedData().getCourse().getStudents().getStudents().clear();
         model.getSelectedData().getCourse().getStudents().getStudents().addAll(studentsViewModel);
         viewHandler.openView("bookRoomForLesson.fxml");
-
-        System.out.println("here 2");
     }
     @FXML
     public void selectedTeacher(){
-        model.getSelectedData().setSelectedTeacher(teachersList.getSelectionModel().getSelectedItem().toString());
+        model.getSelectedData().setSelectedTeacher(teachersList.getSelectionModel().getSelectedItem());
     }
     public void backButton(ActionEvent actionEvent) {
     }

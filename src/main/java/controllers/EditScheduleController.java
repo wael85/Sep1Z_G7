@@ -21,22 +21,17 @@ public class EditScheduleController {
     private Region root;
     @FXML private ListView<Schedule> schedulesViewList;
     private ObservableList scheduleViewModelList;
-    private Schedules schedulesList;
     public void init(ViewHandler viewHandler, SchedulesModel model,Region root) {
         this.viewHandler=viewHandler;
         this.model=model;
         this.root = root;
 
-        schedulesList = model.getSchedules();
+
         scheduleViewModelList = FXCollections.observableArrayList();
-        if(schedulesList.getSchedules().size()>0){
-            scheduleViewModelList.addAll(schedulesList.getSchedules());
+        for (Schedule s: model.getSchedules().getSchedules()){
+            scheduleViewModelList.add(s);
         }
-        schedulesViewList.getItems().addAll(scheduleViewModelList);
-
-
-
-
+        schedulesViewList.setItems(scheduleViewModelList);
     }
 
 
@@ -64,7 +59,11 @@ public class EditScheduleController {
     }
 
     public void reset() {
-        //
+
+        scheduleViewModelList.clear();
+        for (Schedule s: model.getSchedules().getSchedules()){
+            scheduleViewModelList.add(s);
+        }
     }
 
 
@@ -72,11 +71,13 @@ public class EditScheduleController {
         schedulesViewList.setOnMouseClicked(click -> {
 
             if (click.getClickCount() == 2) {
-
+                model.getSelectedData().setSchedule(schedulesViewList.getSelectionModel().getSelectedItem());
+                model.getSelectedData().setSemester(schedulesViewList.getSelectionModel().getSelectedItem().getSemester());
+                model.getSelectedData().setClassName(schedulesViewList.getSelectionModel().getSelectedItem().getClassName());
                 //Use ListView's getSelected Item
-                Schedule schedule = schedulesViewList.getSelectionModel().getSelectedItem();
-                model.setSelectedSchedule(schedule);
-                viewHandler.openView("courseEditingPage.fxml");
+               // Schedule schedule = schedulesViewList.getSelectionModel().getSelectedItem();
+               // model.setSelectedSchedule(schedule);
+                viewHandler.openView("editCoursePage.fxml");
             }
         });
 

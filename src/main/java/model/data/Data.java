@@ -60,7 +60,7 @@ public class Data {
                     courses.getCoursesList().add(course);
                 }else {
                         if(!(courses.hasCourse(course))) {
-                            Teacher teacher = new Teacher(strings[3], "firstName", "lastName", (strings[3] + "@via.dk"), " ");
+                            Teacher teacher = new Teacher(strings[3].trim(), "firstName", "lastName", (strings[3] + "@via.dk"), " ");
                             if (!(teachers.hasTeacher(teacher))) {
                                 teachers.addTeacher(teacher);
                             }
@@ -72,7 +72,7 @@ public class Data {
                             }
                             courses.addCourse(course);
                         }else {
-                            Teacher teacher = new Teacher(strings[3],"firstName","lastName",(strings[3]+"@via.dk")," ");
+                            Teacher teacher = new Teacher(strings[3].trim(),"firstName","lastName",(strings[3]+"@via.dk")," ");
                             for (int k = 0; k < courses.size(); k++) {
                                 if (  courses.getCourse(k).getClassID().equals(course.getClassID()) &&
                                         courses.getCourse(k).getSemester().equals(course.getSemester()) &&
@@ -80,7 +80,6 @@ public class Data {
                                     courses.getCourse(k).getTeachers().add(teacher.getShortName());
                                 }
                             }
-                            System.out.println("here 2");
                         }
 
 
